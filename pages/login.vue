@@ -3,7 +3,7 @@
     <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="80px"
              class="login-container">
 
-      <h2 class="title">系统登录</h2>
+<!--      <h2 class="title">系统登录</h2>-->
 
       <el-form-item prop="account" label="用户名">
         <el-input type="text" v-model="ruleForm2.account" placeholder="请输入用户名" clearable ></el-input>
