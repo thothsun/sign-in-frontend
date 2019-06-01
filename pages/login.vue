@@ -64,10 +64,7 @@
             //   }
             // });
 
-            // this.$cookies.set('user', this.ruleForm2.account, {
-            //   path: '/',
-            //   maxAge: 60 * 60 * 24 * 7
-            // });
+            sessionStorage.setItem('user', JSON.stringify(user));
             window.location.href = '/';
 
           } else {

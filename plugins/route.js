@@ -3,11 +3,11 @@ export default ({app}) => {
     console.log('app:'+app)
 
     if (to.path === '/login') {
-      app.$cookies.remove('user');
+      sessionStorage.removeItem('user');
       console.log('here 1'+to.path);
       next();
     } else {
-      let user = app.$cookies.get('user');
+      let user = JSON.parse(sessionStorage.getItem('user'));
       console.log('user:' + user + ',' + !user);
       if (!user) {
         console.log('here 2'+to.path);
