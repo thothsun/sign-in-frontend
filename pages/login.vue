@@ -18,6 +18,13 @@
       <el-button type="primary" style="width:100%;" @click="handleSubmit2" :loading="logining">登录</el-button>
 
     </el-form>
+
+
+    <p>
+      <NuxtLink to="/">
+        Home Page
+      </NuxtLink>
+    </p>
   </div>
 </template>
 
@@ -47,26 +54,19 @@
         this.$refs.ruleForm2.validate((valid) => {
           if (valid) {
             this.logining = true;
-
-
-            // var loginParams = {username: this.ruleForm2.account, password: this.ruleForm2.checkPass};
-            // requestLogin(loginParams).then(data => {
-            //   this.logining = false;
-            //   let {msg, code, user} = data;
-            //   if (code !== 200) {
-            //     this.$message({
-            //       message: msg,
-            //       type: 'error'
-            //     });
-            //   } else {
-            //     // sessionStorage.setItem('user', JSON.stringify(user));
-            //     this.$router.push({path: '/table'});
-            //   }
-            // });
-
-            sessionStorage.setItem('user', JSON.stringify(user));
-            window.location.href = '/';
-
+            try {
+              this.$store.dispatch('login', {
+                username: this.ruleForm2.account,
+                password: this.ruleForm2.checkPass,
+              })
+              this.ruleForm2.account = ''
+              this.ruleForm2.checkPass = ''
+              this.logining = false
+              window.location.href = '/';
+            } catch (e) {
+              alert("密码错误！")
+              console.log(e)
+            }
           } else {
             console.log('error submit!!');
             return false;

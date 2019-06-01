@@ -1,7 +1,7 @@
 {
   "name": "sign-in-frontend",
   "version": "1.0.0",
-  "description": "My top-notch Nuxt.js project",
+  "description": "大学课堂签到系统前端",
   "author": "sunshuai",
   "private": true,
   "scripts": {
@@ -13,7 +13,11 @@
   "dependencies": {
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.11",
-    "nuxt": "^2.4.0"
+    "nuxt": "^2.4.0",
+    "axios": "^0.19.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"

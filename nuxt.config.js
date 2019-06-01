@@ -1,4 +1,6 @@
 import pkg from './package'
+import bodyParser from 'body-parser'
+import session from 'express-session'
 
 export default {
   mode: 'universal',
@@ -35,7 +37,6 @@ export default {
   */
   plugins: [
     {src: '@/plugins/element-ui', mode: 'client'},
-    {src: '@/plugins/route', mode: 'client'}
   ],
 
   /*
@@ -55,6 +56,22 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+
+
+  serverMiddleware: [
+    // body-parser middleware
+    bodyParser.json(),
+    // session middleware
+    session({
+      secret: 'super-secret-key',
+      resave: false,
+      saveUninitialized: false,
+      cookie: { maxAge: 60000 }
+    }),
+    // Api middleware
+    // We add /api/login & /api/logout routes
+    '~/api'
+  ]
 }
 

@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
       <h1 class="title">
         sign-in-frontend
       </h1>
@@ -25,20 +24,11 @@
 </template>
 
 <script>
-  import Logo from '~/components/Logo.vue'
 
   export default {
     components: {
-      Logo
     },
-    // mounted() {
-    //   var user = sessionStorage.getItem('user');
-    //   if (user) {
-    //     user = JSON.parse(user);
-    //     this.sysUserName = user.name || '';
-    //     this.sysUserAvatar = user.avatar || '';
-    //   }
-    // }
+    middleware: 'auth'
   }
 </script>
 
