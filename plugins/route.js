@@ -1,10 +1,6 @@
 export default ({app}) => {
   app.router.beforeEach((to, from, next) => {
     console.log('app:'+app)
-    if (process.client) {
-      console.log('router.js isClient:' + process.client);
-    }
-
 
     if (to.path === '/login') {
       app.$cookies.remove('user');
