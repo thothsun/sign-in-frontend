@@ -3,14 +3,14 @@
     <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="80px"
              class="login-container">
 
-<!--      <h2 class="title">系统登录</h2>-->
+      <h2 class="title">系统登录</h2>
 
       <el-form-item prop="account" label="用户名">
-        <el-input type="text" v-model="ruleForm2.account" placeholder="请输入用户名" clearable ></el-input>
+        <el-input type="text" v-model="ruleForm2.account" placeholder="请输入用户名" clearable></el-input>
       </el-form-item>
 
       <el-form-item prop="checkPass" label="密码">
-        <el-input type="password" v-model="ruleForm2.checkPass" placeholder="请输入密码" clearable show-password ></el-input>
+        <el-input type="password" v-model="ruleForm2.checkPass" placeholder="请输入密码" clearable show-password></el-input>
       </el-form-item>
 
       <el-checkbox v-model="checked" class="remember">记住密码</el-checkbox>
@@ -49,26 +49,34 @@
             this.logining = true;
 
 
-            var loginParams = {username: this.ruleForm2.account, password: this.ruleForm2.checkPass};
-            requestLogin(loginParams).then(data => {
-              this.logining = false;
-              let {msg, code, user} = data;
-              if (code !== 200) {
-                this.$message({
-                  message: msg,
-                  type: 'error'
-                });
-              } else {
-                sessionStorage.setItem('user', JSON.stringify(user));
-                this.$router.push({path: '/table'});
-              }
-            });
+            // var loginParams = {username: this.ruleForm2.account, password: this.ruleForm2.checkPass};
+            // requestLogin(loginParams).then(data => {
+            //   this.logining = false;
+            //   let {msg, code, user} = data;
+            //   if (code !== 200) {
+            //     this.$message({
+            //       message: msg,
+            //       type: 'error'
+            //     });
+            //   } else {
+            //     // sessionStorage.setItem('user', JSON.stringify(user));
+            //     this.$router.push({path: '/table'});
+            //   }
+            // });
+
+            // this.$cookies.set('user', this.ruleForm2.account, {
+            //   path: '/',
+            //   maxAge: 60 * 60 * 24 * 7
+            // });
+            window.location.href = '/';
 
           } else {
             console.log('error submit!!');
             return false;
           }
         });
+
+
       }
     }
   }

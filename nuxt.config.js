@@ -34,14 +34,20 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {src: '@/plugins/element-ui', ssr: false},
-    {src: '@/plugins/route', ssr: false}
+    {src: '@/plugins/element-ui', mode: 'client'},
+    {src: '@/plugins/route', mode: 'client'}
   ],
 
   /*
   ** Nuxt.js modules
   */
-  modules: [],
+  modules: [
+    // Simple usage
+    'cookie-universal-nuxt',
+
+    // With options
+    ['cookie-universal-nuxt', {alias: 'cookiz'}],
+  ],
 
   /*
   ** Build configuration
@@ -56,3 +62,4 @@ export default {
     }
   }
 }
+
